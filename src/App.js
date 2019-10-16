@@ -43,7 +43,7 @@ function App() {
     }));
   }
 
-  function updateView(catId) {
+  function updateVoteView(catId) {
     const { leftIndex, rightIndex, cats: oldCats } = state;
 
     const index = oldCats.findIndex((cat) => cat.id === catId);
@@ -120,7 +120,7 @@ function App() {
                 <Vote
                   leftCat={cats[leftIndex]}
                   rightCat={cats[rightIndex]}
-                  updateView={updateView}
+                  updateVoteView={updateVoteView}
                   roundNumber={roundNumber} />
               }
             </Suspense>

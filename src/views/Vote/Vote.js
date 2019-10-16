@@ -8,7 +8,7 @@ function Vote(props) {
   const { 
     leftCat,
     rightCat,
-    updateView,
+    updateVoteView,
     roundNumber
   } = props;
 
@@ -22,7 +22,7 @@ function Vote(props) {
               <Picture url={leftCat.url} />
               <figcaption><span role="img" aria-label="Already see this it">👀</span> {leftCat.view}</figcaption>
             </figure>
-            <button onClick={() => updateView(leftCat.id)}>
+            <button onClick={() => updateVoteView(leftCat.id)}>
               <span role="img" aria-label="love this one">❤️</span>
             </button>
           </Cat>
@@ -34,7 +34,7 @@ function Vote(props) {
               <Picture url={rightCat.url} />
               <figcaption><span role="img" aria-label="Already see this it">👀</span> {rightCat.view}</figcaption>
             </figure>
-            <button onClick={() => updateView(rightCat.id)}>
+            <button onClick={() => updateVoteView(rightCat.id)}>
               <span role="img" aria-label="love this one">❤️</span>
             </button>
           </Cat>
@@ -48,7 +48,7 @@ function Vote(props) {
 Vote.propTypes = {
   leftCat: PropTypes.object,
   rightCat: PropTypes.object,
-  updateView: PropTypes.func,
+  updateVoteView: PropTypes.func,
   roundNumber: PropTypes.number
 };
 Vote.displayName = 'Vote';
