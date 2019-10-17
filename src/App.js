@@ -55,9 +55,9 @@ function App() {
     cats[leftIndex].view = oldCats[leftIndex].view + 1;
     cats[rightIndex].view = oldCats[rightIndex].view + 1;
     
-    const candidatesIndex = isFirstRound() 
-      ? linearSelectionOfCandidatesIn({leftIndex, rightIndex})
-      : randomSelectionOfCandidates();
+    const candidatesIndex = hasAllCatsBeenSeenOnce() 
+      ? randomSelectionOfCandidates()
+      : linearSelectionOfCandidatesIn(leftIndex, rightIndex);
     setState({
       cats,
       roundNumber,
@@ -65,7 +65,7 @@ function App() {
     });
   }
 
-  function linearSelectionOfCandidatesIn({ leftIndex, rightIndex }) {
+  function linearSelectionOfCandidatesIn(leftIndex, rightIndex) {
     return {
       leftIndex: leftIndex + 1,
       rightIndex: rightIndex - 1
@@ -87,7 +87,7 @@ function App() {
     };
   }
 
-  function isFirstRound() {
+  function hasAllCatsBeenSeenOnce() {
     const halfOfCatList = Math.round(state.cats.length / 2);
     const { leftIndex, rightIndex } = state;
     if (leftIndex >= halfOfCatList || rightIndex <= halfOfCatList) {
